@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block el_contenido %}
+    <div class="content-section">
+        <form action="" method="POST">
+         <!-- la variable formulario está definida en flaskBlog.py --> 
+            {{ formulario.hidden_tag()  }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">¡Únete ya!</legend>
+                <div class="form-group">
+                    <!-- el "class" que aparece abajo es un css de Bootstrap -->
+                    {{ formulario.username.label(class="form-control-label")  }}
+                    {% if formulario.username.errors %}
+                        {{ formulario.username(class="form-control  form-control-lg is-invalid")  }} 
+                        <div class="invalid-feedback">
+                        {% for error in formulario.username.errors %}
+                            <span>{{ error }}</span>                    
+                        {%  endfor %}
+                        </div> 
+                    {% else %} 
+                    {{ formulario.username(class="form-control  form-control-lg")  }}
+                    {% endif %}
+                   
+                </div>
+                <div class="form-group">
+                        <!-- el "class" que aparece abajo es un css de Bootstrap -->
+                        {{ formulario.email.label(class="form-control-label")  }}
+                        {% if formulario.email.errors %}
+                        {{ formulario.email(class="form-control  form-control-lg is-invalid")  }} 
+                        <div class="invalid-feedback">
+                        {% for error in formulario.email.errors %}
+                            <span>{{ error }}</span>                    
+                        {%  endfor %}
+                        </div> 
+                    {% else %} 
+                    {{ formulario.email(class="form-control  form-control-lg")  }}
+                    {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                            <!-- el "class" que aparece abajo es un css de Bootstrap -->
+                            {{ formulario.password.label(class="form-control-label")  }}
+                            {% if formulario.password.errors %}
+                        {{ formulario.password(class="form-control  form-control-lg is-invalid")  }} 
+                        <div class="invalid-feedback">
+                        {% for error in formulario.password.errors %}
+                            <span>{{ error }}</span>                    
+                        {%  endfor %}
+                        </div> 
+                    {% else %} 
+                    {{ formulario.password(class="form-control  form-control-lg")  }}
+                    {% endif %}
+                        </div>   
+                        <div class="form-group">
+                                <!-- el "class" que aparece abajo es un css de Bootstrap -->
+                                {{ formulario.confirm_password.label(class="form-control-label")  }}
+                                {% if formulario.confirm_password.errors %}
+                        {{ formulario.confirm_password(class="form-control  form-control-lg is-invalid")  }} 
+                        <div class="invalid-feedback">
+                        {% for error in formulario.confirm_password.errors %}
+                            <span>{{ error }}</span>                    
+                        {%  endfor %}
+                        </div> 
+                    {% else %} 
+                    {{ formulario.confirm_password(class="form-control  form-control-lg")  }}
+                    {% endif %}
+                            </div>
+                
+            </fieldset>
+
+            <div class="form-group">
+                    {{formulario.submit(class="btn btn-outline-info")   }}
+                </div>
+
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    ¿Ya estás registrado?
+                    <a href="{{ url_for('funcion_del_logueo')  }}" class="ml-2">Ingresá a tu cuenta</a>
+                </small>
+            </div>
+        </form>
+    </div>
+{% endblock el_contenido %}
